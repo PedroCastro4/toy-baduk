@@ -51,8 +51,19 @@ class Board:
         """
         By convention, fields starting with _ are meant to be accessed only from inside the class.
         """
-        pass
+        next_to = list()
+        cross = [(x,y+1),(x,y-1),(x+1,y),(x-1,y)]
+        for a,b in cross:
+            if a >= 0 and b >= 0 and a < 5 and b < 5:
+                next_to.append((a,b))
+
+        return next_to
+        
     def _count_liberties(self, x, y):
         pass
+
     def is_alive(self, x, y):
+        
+        for a,b in self._neighbors(x,y) :
+            print("%d %d" %(a,b))
         pass

@@ -22,6 +22,8 @@ def main(screen):
         display.display_message(message)
         display.refresh()
 
+        board.is_alive(x-1,y-1)        
+
         input_char = display.get_input()
 
         if input_char == curses.KEY_RIGHT and x<5:
