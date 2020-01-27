@@ -18,10 +18,6 @@ class Node():
         self.stone = Stone.EMPTY
         pass
 
-    def next_to(self, neighbor):
-        self.neighbor = neighbor
-        pass
-
 
 class Board:
     """
