@@ -11,7 +11,6 @@ def main(screen):
     y=3
     display = Display(screen)
     message = ''
-    key_template = "The last key pressed was: \n {} {}"
     board = Board(5, 5)
     turn = Stone.BLACK
 

@@ -10,6 +10,19 @@ class Stone(Enum):
     WHITE = 2
     EMPTY = 0
 
+class Node():
+    def __init__(self,x,y):
+        self.check = False
+        self.neighbors = []
+        self.pair = (x,y)
+        self.stone = Stone.EMPTY
+        pass
+
+    def next_to(self, neighbor):
+        self.neighbor = neighbor
+        pass
+
+
 class Board:
     """
     This is a class to hold our game board object.
@@ -23,26 +36,28 @@ class Board:
         board is created with board = Board(), do it here.
         perhaps making something to store the stones in might be worthwhile?
         """
-        self.board_stone = list()
+        self.nodes = {}
+        self.nodes = list()
         for x in range(width):
-            self.board_stone.append([])
+            self.nodes.append([])
             for y in range(height):
-                self.board_stone[x].append(Stone.EMPTY)
+                self.nodes[x].append(Node(x,y))
+                
         pass
 
     def get_stone_at(self, x, y):
         x=x-1
         y=y-1
-        return self.board_stone[x][y]
+        return self.nodes[x][y].stone
     def set_stone_at(self, x, y, stone):
         x=x-1
         y=y-1
-        if self.board_stone[x][y] == Stone.EMPTY:
+        if self.nodes[x][y].stone == Stone.EMPTY:
             if stone == Stone.BLACK :
-                self.board_stone[x][y]= Stone.BLACK
+                self.nodes[x][y].stone = Stone.BLACK
                 stone = Stone.WHITE
             elif stone == Stone.WHITE:
-                self.board_stone[x][y]= Stone.WHITE
+                self.nodes[x][y].stone = Stone.WHITE
                 stone = Stone.BLACK
         
         return stone
@@ -56,14 +71,14 @@ class Board:
         for a,b in cross:
             if a >= 0 and b >= 0 and a < 5 and b < 5:
                 next_to.append((a,b))
+        self.nodes[x][y].neighbors = next_to
+        pass
 
-        return next_to
-        
     def _count_liberties(self, x, y):
         pass
 
     def is_alive(self, x, y):
-        
-        for a,b in self._neighbors(x,y) :
+        self._neighbors(x,y)
+        for a,b in self.nodes[x][y].neighbors: 
             print("%d %d" %(a,b))
         pass
