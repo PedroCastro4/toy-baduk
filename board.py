@@ -32,7 +32,6 @@ class Board:
         board is created with board = Board(), do it here.
         perhaps making something to store the stones in might be worthwhile?
         """
-        self.nodes = {}
         self.nodes = list()
         for x in range(width):
             self.nodes.append([])
